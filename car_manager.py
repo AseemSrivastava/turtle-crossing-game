@@ -12,6 +12,7 @@ X_COORDINATE = 230
 class CarManager:
     def __init__(self):
         self.all_cars = []
+        self.car_speed = STARTING_MOVE_DISTANCE
 
     # Create a car at random location at right edge of screen
     def create_car(self):
@@ -29,4 +30,8 @@ class CarManager:
     # Move the created cars from right to left of screen
     def move_cars(self):
         for car in self.all_cars:
-            car.backward(STARTING_MOVE_DISTANCE)
+            car.backward(self.car_speed)
+
+    # On successful crossing of turtle increase speed of car
+    def level_up(self):
+        self.car_speed += MOVE_INCREMENT
